@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                <li class="breadcrumb-item active">{{ article.category.name }}</li>
+            </ol>
+        </nav>
+
+        <h1 class="display-4 mb-3">{{ article.title }}</h1>
+        <p class="text-muted">Published on {{ article.published_date|date:"d M Y" }} by <strong>{{ article.author.username }}</strong></p>
+
+        {% if article.image %}
+            <img src="{{ article.image.url }}" class="img-fluid rounded mb-4" alt="{{ article.title }}">
+        {% endif %}
+
+        <div class="article-content fs-5">
+            {{ article.content|linebreaks }}
+        </div>
+
+        <hr class="my-5">
+        <a href="{% url 'index' %}" class="btn btn-outline-secondary">← Back to News Feed</a>
+    </div>
+</div>
+{% endblock %}
