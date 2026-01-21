@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Agency</title>
+</head>
+<body>
+    <h1>Latest News</h1>
+    <hr>
+    {% for article in articles %}
+        <div style="margin-bottom: 20px;">
+            <h2>{{ article.title }}</h2>
+            <p><small>{{ article.category.name }} | {{ article.published_date }}</small></p>
+            {% if article.image %}
+                <img src="{{ article.image.url }}" width="300">
+            {% endif %}
+            <p>{{ article.content|truncatewords:30 }}</p>
+        </div>
+    {% empty %}
+        <p>No news yet.</p>
+    {% endfor %}
+</body>
+</html>
