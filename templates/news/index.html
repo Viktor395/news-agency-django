@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>News Agency</title>
-</head>
-<body>
-    <h1>Latest News</h1>
-    <hr>
-    {% for article in articles %}
-        <div style="margin-bottom: 20px;">
-            <h2>{{ article.title }}</h2>
-            <p><small>{{ article.category.name }} | {{ article.published_date }}</small></p>
-            {% if article.image %}
-                <img src="{{ article.image.url }}" width="300">
-            {% endif %}
-            <p>{{ article.content|truncatewords:30 }}</p>
-        </div>
-    {% empty %}
-        <p>No news yet.</p>
-    {% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Home - News Agency{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Latest News</h1>
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    {% if article.image %}
+                        <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text text-muted small">{{ article.category.name }}</p>
+                        <p class="card-text">{{ article.content|truncatewords:20 }}</p>
+                        <a href="{% url 'article_detail' article.slug %}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No news yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
