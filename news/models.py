@@ -18,7 +18,7 @@ class Article(models.Model):
     image = models.ImageField(upload_to='articles_images/')
     published_date = models.DateTimeField(auto_now_add=True)
     
-    # Зв'язки (Relationships)
+    
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
