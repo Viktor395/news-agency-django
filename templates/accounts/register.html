@@ -1,17 +1,18 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
-{% block title %}Registration{% endblock %}
+{% block title %}Реєстрація{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card shadow">
-            <div class="card-body">
-                <h3 class="card-title text-center">Create an Account</h3>
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h3 class="card-title text-center mb-4">Create an Account</h3>
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-success w-100">Register</button>
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-success w-100 mt-3">Register Now</button>
                 </form>
                 <div class="border-top pt-3 mt-3 text-center">
                     <small class="text-muted">
