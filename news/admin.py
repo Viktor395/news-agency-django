@@ -1,20 +1,18 @@
 from django.contrib import admin
-from .models import Category, Article
+from .models import Article, Category
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug')
-    prepopulated_fields = {'slug': ('name',)}
+    
+    list_display = ['name']
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     
-    list_display = ('title', 'category', 'author', 'published_date')
+    list_display = ['title', 'author', 'category', 'published_date']
     
-    list_filter = ('category', 'author', 'published_date')
-
-    search_fields = ('title', 'content')
+    list_filter = ['category', 'published_date']
+    
+    search_fields = ['title', 'content']
     
     prepopulated_fields = {'slug': ('title',)}
-    
-    date_hierarchy = 'published_date'

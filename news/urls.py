@@ -3,5 +3,10 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    
+    
+    path('article/new/', views.article_create, name='article_create'),
+    
+    
     path('article/<slug:slug>/', views.article_detail, name='article_detail'),
 ]
