@@ -1,5 +1,11 @@
 # 📰 News Agency Project
 
+A web-based news platform built with Django, featuring article management, user authentication, and a clean interface.
+
+## 🚀 Live Demo
+You can check out the deployed project here: 
+[https://news-agency-django.onrender.com](https://news-agency-django.onrender.com)
+
 A professional news agency web application built with **Django 6.0**. This project features a full content management cycle, from user authentication to automated article publishing with SEO-friendly URLs.
 
 ## ✨ Key Features
