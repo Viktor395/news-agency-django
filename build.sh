@@ -2,8 +2,12 @@
 set -o errexit
 
 pip install -r requirements.txt
+
+mkdir -p staticfiles media articles_images news_images news_agency_django/news_images
+
 python manage.py collectstatic --no-input
 python manage.py migrate
+
 python manage.py shell << END
 from django.contrib.auth import get_user_model
 User = get_user_model()
